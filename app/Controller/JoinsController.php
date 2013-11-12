@@ -1,5 +1,5 @@
 <?php
-class JoinController extends AppController{
+class JoinsController extends AppController{
 	public $name = "Join";
 	public $components = array('DebugKit.Toolbar');
 
