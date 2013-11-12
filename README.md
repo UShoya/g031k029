@@ -11,7 +11,7 @@ Our primary goal is to provide a structured framework that enables PHP users at 
 
 [基礎２](https://github.com/UShoya/g031k029/blob/master/app/Controller/MashupsController.php)
 
-[基礎３](https://github.com/UShoya/g031k029/blob/master/app/Controller/JoinController.php)
+[基礎３](https://github.com/UShoya/g031k029/blob/master/app/Controller/MashupsController.php)
 
 Some Handy Links
 ----------------
