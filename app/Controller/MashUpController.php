@@ -1,22 +1,10 @@
 <?php
-class MashUpController extends AppController{
-	public $name = "MashUp";
-	public $components = array('DebugKit.Toolbar');
-
-	public function index(){
-		
-	}
-
-	public function show(){
-		if($this->request->is('POST')){
-			if(!empty($this->request->data['sign'])){
-				$data = $this->Join->handan($this->request->data['sign']);
-				$this->set('data',$data);
-			}
+	class MashupController extends AppController{
+		public $name = "Mashup";
+		public $components = array('DebugKit.Toolbar');
+		public function index(){
+			$result = $this->Mashup->api();
+			$this->set("result",$result);
 		}
 	}
-
-	public function input(){
-		
-	}
-}
+?>
