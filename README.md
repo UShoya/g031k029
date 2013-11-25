@@ -2,7 +2,7 @@
 =============
 
 基礎１
-[動作確認ページ](http://49.212.46.130/~g031k029/cake/boards/index)//[Git]()
+[動作確認ページ](http://49.212.46.130/~g031k029/cake/boards/index)//[Git](https://github.com/UShoya/g031k029/blob/master/app/Controller/BoardsController.php)
 
 基礎２
 [動作コード](http://49.212.46.130/~g031k029/kadai7-2.php)
