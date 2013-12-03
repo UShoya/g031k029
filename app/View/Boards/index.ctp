@@ -6,7 +6,7 @@
     echo $this->Form->create();
     echo $this->Form->input('Board.words',array('label'=>'検索ワード')); 
     echo $this->Form->input('Board.num',array('label'=>'検索件数')); 
-    echo $this->Form->select('Board.sort', array('0'=>'昇順','1'=>'降順'));
+    echo $this->Form->select('Board.sort', array('0'=>'古い順','1'=>'新しい順'));
     echo $this->Form->end('検索');
     echo $this->Html->tag('br');
     echo $this->Html->tag('br');
