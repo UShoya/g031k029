@@ -1,6 +1,7 @@
 <?php
 	class Board extends Model{
 		public $name = 'Board';
+		public $belongsTo = array('User');
 		//public $useTable = false;
 		public function db_connect($com){
 			$this->save($com);

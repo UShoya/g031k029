@@ -1,4 +1,7 @@
 <?php
+	echo $this->Html->tag('h2', '投稿ページ');
+	echo $this->Html->tag('br');
+
 	if(empty($this->params->data['Board']['comment'])){
 		echo '投稿内容';
 		echo $this->Form->create();
