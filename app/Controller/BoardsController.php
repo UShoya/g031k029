@@ -2,7 +2,7 @@
 	class BoardsController extends AppController{
 		public $name = 'Boards';
 
-		public $uses = array('Board','User'); //Userモデルを追加
+		public $uses = array('Board','User', 'NewUser'); //Userモデルを追加
 		/****認証周り*****/
 		public $components = array(
             'DebugKit.Toolbar', //デバッグきっと
@@ -40,7 +40,9 @@
                     $this->set('data', $this->Board->find('all', array('order' => 'Board.id DESC')));
                 }
             }else{
-                $this->set('data',$this->Board->find('all'));
+                $data = $this->Board->find('all');
+                $data = $this->NewUser->getdata($data);
+                $this->set('data',$data);
             }
 		}
 
@@ -65,7 +67,10 @@
 		}
 
 		public function create2(){
-			$this->request->data['Board']['user_id'] = $this->Auth->user(id);
+    //         if(empty($this->request->data['Board']['user_id'])){
+			 // $this->request->data['Board']['user_id'] = $this->Auth->user('id');
+    //         }
+            
 			$this->Board->db_connect($this->request->data);
 			$this->redirect(array("action" => "index"));
 		}

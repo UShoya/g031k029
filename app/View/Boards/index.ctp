@@ -14,17 +14,24 @@
 	echo $this->Html->tag('br');
     echo $this->Html->tag('br');
 	//echo $this->element('showboard',array('data' => $data, 'mes' => 'こんにちは'));
-    //var_dump($user);
-    //var_dump($data);
     foreach ($data as $key => $value) {
         if(!empty($value["Board"]["comment"])){
             echo $value["Board"]["id"].':';
             echo $value["Board"]["comment"].' ';
-            echo $value["User"]["name"].'/';
-            echo $value["User"]["email"].'/';
+            if (!empty($value["User"]["name"]))
+                echo $value["User"]["name"].'/';
+            else
+                echo $value["User"]["username"].'/';    
+            if (!empty($value["User"]["email"]))
+                echo $value["User"]["email"].'/';
             echo $value["Board"]["created"].' ';
         }
-        if($value["Board"]["user_id"] == $user["id"]){
+        //var_dump($user);
+        if (empty($user['id']))
+            $user_id = $user['NewUser']["tw_id"];
+        else
+            $user_id = $user["id"];
+        if($value["Board"]["user_id"] == $user_id){
             echo $this->Html->link('編集', array(
                     'action' => 'edit',
                     $value["Board"]["id"]
