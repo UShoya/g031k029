@@ -52,7 +52,7 @@
             $this->Twitter->setTwitterSource('twitter');//アクセストークンの取得を実施
             $token = $this->Twitter->getAccessToken();
             $data['User'] = $this->NewUser->signin($token); //ユーザ登録
-            $data = $this->NewUser->find('first', array('conditions' => array("username" => $data["User"]["name"]), "password" => $data["User"]["password"]));
+            $data = $this->NewUser->find('first', array('conditions' => array("username" => $data["User"]["username"]), "password" => $data["User"]["password"]));
             $this->Auth->login($data); //CakePHPのAuthログイン処理
             $this->redirect($this->Auth->loginRedirect); //ログイン後画面へリダイレクト
         }

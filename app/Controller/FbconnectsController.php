@@ -31,7 +31,7 @@ class FbconnectsController extends AppController {
         //$myFbData_kana = $this->Session->read('fbdata_kana'); //フリガナ
         //pr($myFbData_kana); //フリガナデータ表示
         pr($myFbData);//表示
-        $this->fbpost("hello world");//facebookに投稿
+        //$this->fbpost("hello world");//facebookに投稿
     }
 
  	public function beforeFilter(){//login処理の設定
@@ -52,7 +52,6 @@ class FbconnectsController extends AppController {
             // mb_convert_variables('UTF-8', 'auto', $me_kana);
             // $this->Session->write('fbdata_kana',$me_kana);//フリガナデータをセッションに保存
         //}
-            
             $data = $this->NewUser->signinfb($this->Session->read('mydata'));
  			if ($this->Auth->login($data))
                 return $this->redirect($this->Auth->redirect());
@@ -67,7 +66,7 @@ class FbconnectsController extends AppController {
     private function createFacebook() {//appID, secretを記述
         return new Facebook(array(
             'appId' => '775698135779387',
-            'secret' => '20bbd2d90e6a404c580ec597fe33f146'
+            'secret' => '290a50d4875a93dbabdf0206e509cafc'
         ));
     }
  
@@ -77,7 +76,7 @@ class FbconnectsController extends AppController {
             'access_token' => $facebook->getAccessToken(), //access_token入手
             'message' => $postData,
             'name' => "test",
-            'link' => "http://twitter.com/n0bisuke",
+            'link' => "http://twitter.com/softboy18",
             'description' => "test",
         );
         $facebook->api('/me/feed', 'POST', $attachment);

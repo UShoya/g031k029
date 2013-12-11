@@ -16,13 +16,13 @@
 		//echo $this->Form->hidden("user_id", array("value" => $com["Board"]["user_id"]));
 		//echo $this->Form->hidden("id", array("value" => $com["Board"]["user_id"]));
 		if(!empty($user["NewUser"]["tw_id"])){
-			//$this->User->save($user["NewUser"]["tw_id"]);
 			$com["Board"]["user_id"]=$user["NewUser"]["tw_id"];
-			//var_dump($user);
+		}else if(!empty($user["NewUser"]["id"])){
+			$com["Board"]["user_id"]=$user["NewUser"]["id"];
 		}else{
 			$com["Board"]["user_id"]=$user["id"];
 		}
-		//var_dump($com);
+		
 		echo $this->Form->hidden("user_id", array("value" => $com["Board"]["user_id"]));
 		echo $this->Html->tag('h2', $com["Board"]["comment"]);
 		echo $this->Html->tag('br');

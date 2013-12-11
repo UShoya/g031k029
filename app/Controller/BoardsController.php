@@ -40,7 +40,7 @@
                     $this->set('data', $this->Board->find('all', array('order' => 'Board.id DESC')));
                 }
             }else{
-                $data = $this->Board->find('all');
+                $data = $this->Board->find('all');//var_dump($this->Auth->user());
                 $data = $this->NewUser->getdata($data);
                 $this->set('data',$data);
             }
@@ -68,8 +68,7 @@
 
 		public function create2(){
     //         if(empty($this->request->data['Board']['user_id'])){
-			 // $this->request->data['Board']['user_id'] = $this->Auth->user('id');
-    //         }
+			// $this->request->data['Board']['user_id'] = $this->Auth->user('id');
             
 			$this->Board->db_connect($this->request->data);
 			$this->redirect(array("action" => "index"));

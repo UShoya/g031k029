@@ -1,5 +1,6 @@
 <?php 
-	//debug($data); 
+    //var_dump($user); 
+	//var_dump($data);
 	echo $this->Html->link('投稿する', array('controller' => 'Boards', 'action' => 'create'));
     echo $this->Html->tag('br');
     echo $this->Html->tag('br');
@@ -27,9 +28,13 @@
             echo $value["Board"]["created"].' ';
         }
         //var_dump($user);
-        if (empty($user['id']))
+        if(!empty($user["NewUser"]["tw_id"])){
+            //$this->User->save($user["NewUser"]["tw_id"]);
             $user_id = $user['NewUser']["tw_id"];
-        else
+            //var_dump($user);
+        }else if(!empty($user["NewUser"]["id"])){
+            $user_id = $user['NewUser']["id"];
+        }else
             $user_id = $user["id"];
         if($value["Board"]["user_id"] == $user_id){
             echo $this->Html->link('編集', array(
