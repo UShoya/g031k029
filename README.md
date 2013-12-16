@@ -1,4 +1,14 @@
-演習第９回課題
+演習第１１回課題
+=============
+
+基礎１
+[動作確認ページ](http://49.212.46.130/~g031k029/cake/boards/index)//[Git](https://github.com/UShoya/g031k029/blob/master/app/Controller/BoardsController.php)
+
+基礎２
+[動作確認ページ](http://klutzy-kathyrn.gopagoda.com/)//[Git](https://github.com/UShoya/g031k029/blob/master/app/Controller/BoardsController.php)
+
+---------------------------------------------------------------------------------
+演習第１０回課題
 =============
 
 基礎１
@@ -8,7 +18,7 @@
 基礎１と同様
 
 ---------------------------------------------------------------------------------
-演習第８回課題
+演習第９回課題
 =============
 
 基礎１

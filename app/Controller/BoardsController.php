@@ -23,7 +23,8 @@
                 'authError' => 'あなたのお名前とパスワードを入力して下さい。',
             )
         );
-		//public $layout = "board";
+        public $layout = "board";
+		//public $layout = "jquery";
 
 		public function index(){
             if(!empty($this->request->data['Board']['words'])){
@@ -34,10 +35,13 @@
                 $this->set('data', $search);
             }else if(!empty($this->request->data['Board']['sort'])){
                 $id = $this->request->data['Board']['sort'];
-                if($id = 0){
-                    $this->set('data', $this->Board->find('all', array('order' => 'Board.id ASC')));
+                if($id == 0){
+                    $this->set('data', $this->Board->find('all', array('order' => 'Board.created ASC')));
                 }else{
-                    $this->set('data', $this->Board->find('all', array('order' => 'Board.id DESC')));
+                    $data = $this->Board->find('all', array('order' => 'Board.created DESC'));//var_dump($this->Auth->user());
+                    $data = $this->NewUser->getdata($data);
+                    //$this->set('data', $this->Board->find('all', array('order' => 'Board.created DESC')));
+                    $this->set('data', $data);
                 }
             }else{
                 $data = $this->Board->find('all');//var_dump($this->Auth->user());
@@ -77,6 +81,10 @@
 		public function beforeFilter(){//login処理の設定
              $this->Auth->allow('login','logout','useradd');//ログインしないで、アクセスできるアクションを登録する
              $this->set('user',$this->Auth->user()); // ctpで$userを使えるようにする 。
+             if($this->request->is('mobile')){
+                $this->theme = 'jquery';
+                $this->layout = 'jquery';
+             }
         }
 
         public function login(){//ログイン

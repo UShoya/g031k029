@@ -37,6 +37,10 @@ class FbconnectsController extends AppController {
  	public function beforeFilter(){//login処理の設定
         $this->Auth->allow('index', 'facebook', 'fbpost', 'createFacebook');
         $this->set('user',$this->Auth->user('NewUser')); // ctpで$userを使えるようにする 。
+        if($this->request->is('mobile')){
+                $this->theme = 'jquery';
+                $this->layout = 'jquery';
+             }
     }
 
     public function facebook(){//facebookの認証処理部分

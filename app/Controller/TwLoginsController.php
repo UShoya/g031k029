@@ -27,6 +27,10 @@
         public function beforeFilter(){//login処理の設定
              $this->Auth->allow('twitter_login', 'login', 'oauth_callback');
              $this->set('user',$this->Auth->user()); // ctpで$userを使えるようにする 。
+             if($this->request->is('mobile')){
+                $this->theme = 'jquery';
+                $this->layout = 'jquery';
+             }
         }
 
         public function twitter_login(){//twitterのOAuth用ログインURLにリダイレクト
