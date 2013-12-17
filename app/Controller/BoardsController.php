@@ -23,7 +23,7 @@
                 'authError' => 'あなたのお名前とパスワードを入力して下さい。',
             )
         );
-        public $layout = "board";
+        //public $layout = "board";
 		//public $layout = "jquery";
 
 		public function index(){
@@ -31,8 +31,18 @@
                 $WORDS = $this->request->data['Board']['words'];
                 $NUM = $this->request->data['Board']['num'];
                 $conditions = array("Board.comment LIKE" => "%$WORDS%");
-                $search = $this->Board->find('all', array('conditions' => $conditions, 'limit' => $NUM));
-                $this->set('data', $search);
+                if (!empty($this->request->data['Board']['sort'])) {
+                    $id = $this->request->data['Board']['sort'];
+                    if($id == 0){
+                        $this->set('data', $this->Board->find('all', array('order' => 'Board.created ASC','conditions' => $conditions, 'limit' => $NUM)));
+                    }else{
+                        $data = $this->Board->find('all', array('order' => 'Board.created DESC','conditions' => $conditions, 'limit' => $NUM));
+                    }
+                }else{
+                    $data = $this->Board->find('all', array('conditions' => $conditions, 'limit' => $NUM));
+                }
+                $data = $this->NewUser->getdata($data);
+                $this->set('data', $data);
             }else if(!empty($this->request->data['Board']['sort'])){
                 $id = $this->request->data['Board']['sort'];
                 if($id == 0){
